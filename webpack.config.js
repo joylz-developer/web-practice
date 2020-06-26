@@ -126,7 +126,6 @@ const config = {
       },
       {
         test: /\.css$/,
-        exclude: /fonts/,
         use: cssLoaders()
       },
       {

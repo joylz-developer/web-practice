@@ -1,0 +1,9 @@
+@use '_reset.scss' as *;
+@use '_variables.scss' as *;
+@import "../fonts/bloggersans.css";
+
+
+* {
+  font-family: "Blogger Sans", sans-serif;
+  color: var(--back);
+}
