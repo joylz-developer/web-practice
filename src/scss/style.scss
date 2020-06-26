@@ -2,8 +2,96 @@
 @use '_variables.scss' as *;
 @import "../fonts/bloggersans.css";
 
+$size-top: 80;
+$size-other: 50;
 
 * {
   font-family: "Blogger Sans", sans-serif;
-  color: var(--back);
+  color: var(--font-color1);
+  font-weight: 300;
+}
+
+b {
+  font-weight: 700;
+  > * {
+    font-weight: 700;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.center-align-vertical {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.light-text {
+  color: var(--font-color2);
+}
+
+////////////////////////////////////////
+
+body {
+  background: url('../images/back.png'), var(--back-opacity);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: color;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+.container {
+  border-bottom: 1px solid var(--lines);
+  // border-top: 1px solid var(--lines);
+}
+
+.center-block-vert {
+  border-right: 1px solid var(--lines);
+  border-left: 1px solid var(--lines);
+}
+
+/////////////////////////////////////////
+
+.header {
+  height: $size-top + px;
+  > div {
+    height: 100%;
+  }
+}
+
+.header-phone {
+  position: relative;
+  float: left;
+}
+
+.header-phone_con {
+  padding-left: 20px;
+}
+
+.header-but {
+  float: right;
+}
+
+.header-but_con {
+  right: 0;
+  padding-right: 20px + $padding;
+}
+
+.header-but-block {
+  float: left;
+  height: 50px;
+  width: 50px;
+  > p {
+    line-height: 50px;
+    text-align: center;
+  }
+}
+
+//////////////////////////////////////////////////////
+
+.main-header {
+  height: calc(100vh - #{$size-top + px} - #{$size-other + px});
 }

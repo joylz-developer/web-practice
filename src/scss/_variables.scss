@@ -1,6 +1,14 @@
 
-$back: #0055dd;
+$back: #F3F3F3;
+$back-opacity: #f3f3f3b3;
+$lines: #BBBBBB;
+$font-color1: #2e2e2e;
+$font-color2: #7c7c7c;
 
 :root[theme="dark"] {
   --back: #{$back};
+  --back-opacity: #{$back-opacity};
+  --lines: #{$lines};
+  --font-color1: #{$font-color1};
+  --font-color2: #{$font-color2};
 }

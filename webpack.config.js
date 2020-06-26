@@ -8,6 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const distPath = path.join(__dirname, '/dist');
+const srcPath = path.join(__dirname, '/src');
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
@@ -58,6 +59,11 @@ const plugins = () => {
     new MiniCssExtractPlugin({
       filename: filename('css')
     }),
+    // new CopyWebpackPlugin({
+    //   patterns: [
+    //     { from: srcPath + '/images', to: distPath },
+    //   ],
+    // }),
   ];
 
   return base;
@@ -156,6 +162,17 @@ const config = {
             name: '[path][name].[ext]',
           },
         }],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'images',
+            },
+          },
+        ],
       },
     ],
   },
