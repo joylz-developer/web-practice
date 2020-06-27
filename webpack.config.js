@@ -174,6 +174,10 @@ const config = {
           },
         ],
       },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+      },
     ],
   },
 };

@@ -114,23 +114,31 @@ li {
   list-style-type: none;
 }
 
+span {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  font-stretch: inherit;
+}
+
 ul {
   margin-left: 0;
   padding-left: 0;
 }
 
 .row {
-	display: flex;
-	flex-wrap: wrap;
-	margin: 0 -#{$padding}px;
-	> [class*="col-"] {
-		position: relative;
-		min-height: 1px;
-		padding-right: $padding + px;
-		padding-left: $padding + px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -#{$padding}px;
+  > [class*='col-'] {
+    position: relative;
+    min-height: 1px;
+    padding-right: $padding + px;
+    padding-left: $padding + px;
 
-		float: left;
-	}
+    float: left;
+  }
 }
 
 .our-grid {
@@ -147,93 +155,104 @@ ul {
 }
 
 @mixin gen-col($short) {
-	@for $i from 1 through 12 {
-		.col#{$short}-#{$i} {
-			width: #{100 - (100 / 12) * abs($i - 12)}#{'%'};
-		}
+  @for $i from 1 through 12 {
+    .col#{$short}-#{$i} {
+      width: #{100 - (100 / 12) * abs($i - 12)}#{'%'};
+    }
 
-		.pull#{$short}--#{$i} {
-			right: #{100 - (100 / 12) * abs($i - 12)}#{'%'};
-		}
+    .pull#{$short}-#{$i} {
+      right: #{100 - (100 / 12) * abs($i - 12)}#{'%'};
+    }
 
-		.push#{$short}-#{$i} {
-			left: #{100 - (100 / 12) * abs($i - 12)}#{'%'};
-		}
+    .push#{$short}-#{$i} {
+      left: #{100 - (100 / 12) * abs($i - 12)}#{'%'};
+    }
 
-		.offset#{$short}-#{$i} {
-			margin-left: #{100 - (100 / 12) * abs($i - 12)}#{'%'};
-		}
-	}
+    .offset#{$short}-#{$i} {
+      margin-left: #{100 - (100 / 12) * abs($i - 12)}#{'%'};
+    }
+  }
 
-	.pull#{$short}-0 {
-		right: auto;
-	}
+  .pull#{$short}-0 {
+    right: auto;
+  }
 
-	.push#{$short}-0 {
-		left: auto;
-	}
+  .push#{$short}-0 {
+    left: auto;
+  }
 
-	.offset#{$short}-0 {
-		margin-left: 0;
-	}
+  .offset#{$short}-0 {
+    margin-left: 0;
+  }
 
-	.col#{$short}-auto {
-		-webkit-box-flex: 0;
+  .col#{$short}-auto {
+    -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
     width: auto;
     max-width: none;
-	}
+  }
 
-	.col#{$short} {
-		-ms-flex-preferred-size: 0;
-		flex-basis: 0;
-		-webkit-box-flex: 1;
-		-ms-flex-positive: 1;
-		flex-grow: 1;
-		max-width: 100%;
-	}
+  .col#{$short} {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+  }
 }
 
-@each $short, $size in
-(xs, 0),
-('-sm', 576),
-('-md', 768),
-('-lg', 992),
-('-xl', 1200) {
-	@if ($short != xs) {
-		@media (min-width: #{$size}px) {
-			@include gen-col($short);
-		}
-	} @else {
-		@include gen-col('');
-	}
+$media-sizes: (
+  xs: 0,
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+);
+
+@each $short, $size in $media-sizes {
+  @if ($short != xs) {
+    @media (min-width: #{$size}px) {
+      @include gen-col('-' + $short);
+    }
+  } @else {
+    @include gen-col('');
+  }
+}
+
+@function media-size($curSize) {
+  @each $short, $size in $media-sizes {
+    @if ($short == $curSize) {
+			@return #{$size}px;
+    }
+  }
 }
 
 .w-100 {
-	width: 100%!important;
+  width: 100% !important;
 }
 
 h1 {
-	font-size: 32px;
+  font-size: 32px;
 }
 
 h2 {
-	font-size: 24px;
+  font-size: 24px;
 }
 
 h3 {
-	font-size: 19px;
+  font-size: 19px;
 }
 
 h4 {
-	font-size: 16px;
+  font-size: 16px;
 }
 
 h5 {
-	font-size: 13px;
+  font-size: 13px;
 }
 
 h6 {
-	font-size: 11px;
+  font-size: 11px;
 }
