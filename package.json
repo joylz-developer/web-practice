@@ -1,7 +1,7 @@
 {
-  "name": "web",
+  "name": "web-practice",
   "version": "1.0.0",
-  "description": "web",
+  "description": "web-practice",
   "main": "main.ts",
   "scripts": {
     "w": "cross-env NODE_ENV=development webpack --mode development -w",
