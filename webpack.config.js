@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const fs = require('fs');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -39,6 +40,26 @@ const optimization = () => {
   return config
 }
 
+function generateHtmlPlugins(templateDir) {
+  const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
+  return templateFiles.map(item => {
+    const parts = item.split('.');
+    const name = parts[0];
+    const extension = parts[1];
+    return new HTMLWebpackPlugin({
+      filename: `${name}.html`,
+      template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
+      chunks: [`${name}`],
+      minify: {
+        collapseWhitespace: false
+      }
+      // inject: false,
+    })
+  });
+}
+
+const htmlPlugins = generateHtmlPlugins('./src/html/views');
+
 const plugins = () => {
   const base = [
     new webpack.ProgressPlugin(),
@@ -47,15 +68,6 @@ const plugins = () => {
         return new CleanWebpackPlugin();
       }
     },
-    new HTMLWebpackPlugin(
-      {
-        template: './index.html',
-        filename: 'index.html',
-        chunks: ['index'],
-        minify: {
-          collapseWhitespace: false
-        }
-      }),
     new MiniCssExtractPlugin({
       filename: filename('css')
     }),
@@ -64,7 +76,7 @@ const plugins = () => {
     //     { from: srcPath + '/images', to: distPath },
     //   ],
     // }),
-  ];
+  ].concat(htmlPlugins);
 
   return base;
 }
@@ -176,6 +188,7 @@ const config = {
       },
       {
         test: /\.html$/i,
+        include: path.resolve(__dirname, 'src/html/views'),
         loader: 'html-loader',
       },
     ],
