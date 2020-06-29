@@ -131,7 +131,7 @@ body {
   position: relative;
   float: left;
   ul {
-    margin-left: 70px;
+    margin-left: 30px;
   }
   li {
     margin: 50px 0;
@@ -165,13 +165,14 @@ body {
   position: relative;
   float: right;
   ul {
-    margin-right: 70px;
+    margin-right: 30px;
   }
   li {
     margin: 50px 0;
   }
   h4 {
     position: relative;
+    font-weight: 400;
     color: $font-color1;
     text-transform: uppercase;
     text-align: right;
@@ -199,7 +200,7 @@ body {
 
 .main-header-bottom_right {
   ul {
-    padding-right: 50px;
+    padding-right: 10px;
     justify-content: flex-end;
   }
 
@@ -208,7 +209,7 @@ body {
 
 .main-header-bottom_left {
   ul {
-    padding-left: 50px;
+    padding-left: 10px;
     justify-content: flex-start;
   }
 }
@@ -236,3 +237,118 @@ body {
 }
 
 /////////////////////////////////////////////////////
+
+.main-heading {
+  text-align: center;
+  line-height: 50px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.main-dark-back {
+  background-color: $font-color1;
+}
+
+.main-block {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  padding: $padding + px 0;
+}
+
+.card-con {
+  display: inline-flex;
+  padding: $padding / 2 + px $padding / 2 + px;
+}
+
+.card {
+  display: block;
+  position: relative;
+  height: 310px;
+  background-color: #fff;
+  width: 180px;
+  border-radius: 4px;
+  overflow: hidden;
+  &:hover .card-info-but {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+.card-img {
+  position: relative;
+  padding: $padding + px;
+  width: 100%;
+  height: 170 + px;
+  img {
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.card-info {
+  position: relative;
+  width: 100%;
+  padding: 0 $padding + px;
+}
+
+.card-info-top {
+  position: relative;
+}
+
+.card-info-price {
+  position: relative;
+  width: 100%;
+  h4 {
+    text-align: center;
+    font-weight: 700;
+  }
+  h6 {
+    text-align: center;
+    text-decoration: line-through;
+    color: $font-color2;
+  }
+}
+
+.card-info-details {
+  padding: $padding + px 0;
+  h5 {
+    color: $font-color2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+    box-orient: vertical;
+  }
+  p {
+    padding: 3px 0;
+    font-weight: 500;
+    color: $font-color1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 1;
+    box-orient: vertical;
+  }
+}
+
+.card-info-but {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  bottom: -40px;
+  display: block;
+  opacity: 0;
+  background-color: $font-color3;
+  transition: all 0.3s ease-out;
+  p {
+    text-align: center;
+    line-height: 40px;
+    color: $back;
+    font-weight: 700;
+  }
+}

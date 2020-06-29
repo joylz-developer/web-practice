@@ -5,6 +5,7 @@ $lines: #BBBBBB;
 $font-color1: #242424;
 $font-color2: #7c7c7c;
 $font-color3: #ff7e00;
+$font-color4: #7c7c7c3b;
 
 :root[theme="dark"] {
   --back: #{$back};
@@ -13,4 +14,5 @@ $font-color3: #ff7e00;
   --font-color1: #{$font-color1};
   --font-color2: #{$font-color2};
   --font-color3: #{$font-color3};
+  --font-color4: #{$font-color4};
 }
